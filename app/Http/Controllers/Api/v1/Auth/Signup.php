@@ -32,7 +32,7 @@ class Signup extends Controller
         }
 
         // store token
-        $token = $user->createToken($user->name.'-token', []);
+        $token = $user->createToken($user->username.'-token', []);
 
         return response()->json([
             'success' => true,
