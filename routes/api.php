@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\v1\Auth\Signup;
+use App\Http\Controllers\Api\v1\Login;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,4 +22,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::name("api.v1.")->prefix("v1")->group(function() {
     Route::post("/signup", Signup::class);
+    Route::post('/login', Login::class)->name('login');
 });
