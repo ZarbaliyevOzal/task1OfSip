@@ -4,11 +4,15 @@ namespace App\Http\Controllers\Api\v1\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SignupRequest;
+use App\Http\Resources\UserResource;
 use App\Models\User;
+use App\Traits\GenerateUserToken;
 use Illuminate\Support\Facades\Hash;
 
 class Signup extends Controller
 {
+    use GenerateUserToken;
+    
     /**
      * Handle the incoming request. Signup new user
      * 
@@ -32,13 +36,13 @@ class Signup extends Controller
         }
 
         // store token
-        $token = $user->createToken($user->username.'-token', []);
+        $token = $this->generateUserToken($user, []);
 
         return response()->json([
             'success' => true,
             'message' => __('Successfully registered'),
-            'user' => $user,
-            'token' => $token->plainTextToken
+            'user' => new UserResource($user),
+            'token' => $token->plainTextToken,
         ], 201);
     }
 }
