@@ -1,5 +1,5 @@
 # endpoint
-POST /api/v1/sigin
+POST /api/v1/signin
 
 POST /api/v1/signup
 
