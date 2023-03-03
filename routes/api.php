@@ -1,7 +1,7 @@
 <?php
 
+use App\Http\Controllers\Api\v1\Auth\SignIn;
 use App\Http\Controllers\Api\v1\Auth\Signup;
-use App\Http\Controllers\Api\v1\Login;
 use App\Http\Controllers\Api\v1\Profile;
 use App\Http\Controllers\UpdateInfo;
 use Illuminate\Http\Request;
@@ -24,7 +24,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::name('api.v1.')->prefix('v1')->group(function() {
     Route::post('/signup', Signup::class);
-    Route::post('/signin', Login::class)->name('login');
+    Route::post('/signin', SignIn::class)->name('signin');
     Route::middleware(['auth:sanctum'])->group(function () {
         Route::get('/info', Profile::class)->name('info');
         Route::put('/info', UpdateInfo::class)->name('info.update');

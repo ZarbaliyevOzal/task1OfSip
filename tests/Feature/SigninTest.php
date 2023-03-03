@@ -8,18 +8,18 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Testing\Fluent\AssertableJson;
 use Tests\TestCase;
 
-class LoginTest extends TestCase
+class SigninTest extends TestCase
 {
     /**
      * A basic feature test example.
      * 
      * @group apiv1Login
      */
-    public function test_successfull_login(): void
+    public function test_successfull_signin(): void
     {
         $user = User::factory()->create();
         
-        $response = $this->postJson(route('api.v1.login'), [
+        $response = $this->postJson(route('api.v1.signin'), [
             'username' => $user->username,
             'password' => 'password',
         ]);
