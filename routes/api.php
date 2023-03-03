@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\v1\Auth\SignIn;
 use App\Http\Controllers\Api\v1\Auth\Signup;
 use App\Http\Controllers\Api\v1\Profile;
+use App\Http\Controllers\Api\v1\Auth\Token;
 use App\Http\Controllers\UpdateInfo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -28,5 +29,6 @@ Route::name('api.v1.')->prefix('v1')->group(function() {
     Route::middleware(['auth:sanctum'])->group(function () {
         Route::get('/info', Profile::class)->name('info');
         Route::put('/info', UpdateInfo::class)->name('info.update');
+        Route::delete('/token', Token::class)->name('token');
     });
 });

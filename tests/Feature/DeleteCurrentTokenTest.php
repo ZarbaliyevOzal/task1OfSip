@@ -17,7 +17,7 @@ class DeleteCurrentTokenTest extends TestCase
     /**
      * A basic feature test example.
      */
-    public function test_example(): void
+    public function test_delete_current_token(): void
     {
         $user = User::factory()->create();
         // generate token
