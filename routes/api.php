@@ -24,7 +24,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::name('api.v1.')->prefix('v1')->group(function() {
     Route::post('/signup', Signup::class);
-    Route::post('/login', Login::class)->name('login');
+    Route::post('/signin', Login::class)->name('login');
     Route::middleware(['auth:sanctum'])->group(function () {
         Route::get('/info', Profile::class)->name('info');
         Route::put('/info', UpdateInfo::class)->name('info.update');
